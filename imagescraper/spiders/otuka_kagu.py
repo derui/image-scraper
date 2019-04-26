@@ -8,7 +8,13 @@ class TokyoInteriorSpider(scrapy.Spider):
     name = "otuka_kagu"
     allowed_domains = ["www.idc-otsuka.jp"]
     start_urls = [
-        'https://www.idc-otsuka.jp/item/index.php?lcategory=sofa'
+        'https://www.idc-otsuka.jp/item/index.php?lcategory=sofa',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=bedframe',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=mattress',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=sfbed',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=dset&r1=1',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=dset&r1=3',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=dchair',
     ]
 
     def __init__(self, offset=None, *args, **kwargs):
@@ -23,8 +29,12 @@ class TokyoInteriorSpider(scrapy.Spider):
             detail_url = urllib.parse.urljoin(response.url, detail_url)
 
             category = urllib.parse.parse_qs(urllib.parse.urlparse(response.url).query)
+            if 'lcategory' in category:
+                category = category['lcategory'][0]
+            elif 'scategory' in category:
+                category = category['scategory'][0]
             yield scrapy.Request(detail_url,
-                                 callback=self._parse_detail(category['lcategory'][0]))
+                                 callback=self._parse_detail(category))
 
         pagings = response.xpath('//span[@class="nextprev" and contains(*, "次へ")]//a/@href').extract_first()
 
