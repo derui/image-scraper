@@ -15,6 +15,17 @@ class TokyoInteriorSpider(scrapy.Spider):
         'https://www.idc-otsuka.jp/item/index2.php?scategory=dset&r1=1',
         'https://www.idc-otsuka.jp/item/index2.php?scategory=dset&r1=3',
         'https://www.idc-otsuka.jp/item/index2.php?scategory=dchair',
+        'https://www.idc-otsuka.jp/item/index.php?lcategory=ltable',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=dboard',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=officechair',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=desk',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=carpet',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=light',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=tvb',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=dresser',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=ochair',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=recliner',
+        'https://www.idc-otsuka.jp/item/index2.php?scategory=zataku',
     ]
 
     def __init__(self, offset=None, *args, **kwargs):
