@@ -104,6 +104,7 @@ class NitoriSpider(scrapy.Spider):
     def _parse_detail(self, category):
         def _parse(response):
             json_content = response.xpath('//div[starts-with(@id, "entitledItem_")]/text()').extract_first()
+            file_url = None
             if json_content is not None:
                 parsed = json.loads(json_content)
                 file_url = parsed[0]["ItemImage"]
